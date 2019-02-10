@@ -5,13 +5,20 @@ import sys
 
 
 # model parameters
-item_set_size = 3
-sigma = 4
-
 try:
     filename = sys.argv[1]
 except IndexError:
     filename = 'retail_25k.dat'
+
+try:
+    item_set_size = int(sys.argv[2])
+except IndexError:
+    item_set_size = 3
+
+try:
+    sigma = int(sys.argv[3])
+except IndexError:
+    sigma = 4
 
 
 def main():
