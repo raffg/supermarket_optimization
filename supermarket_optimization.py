@@ -1,7 +1,17 @@
-from itertools import combinations
-from collections import Counter
+# This script identifies association rules based on existing records of
+# buyer’s transactions at a supermarket. The input is a whitespace
+# delimited data file, where each row records the SKU numbers of items
+# in a single transaction. The script finds the most common items sold
+# together. The set size for the common items is defined in the variable
+# item_set_size, and a parameter 'sigma' defines the minimum number of
+# occurances of each set to return. Default values are 3 for item_set_size
+# and 4 for sigma.
+
+
 import csv
 import sys
+from itertools import combinations
+from collections import Counter
 
 
 # model parameters
@@ -22,6 +32,7 @@ except IndexError:
 
 
 def main():
+    # Run through the data pipeline
     print('Opening file...')
     with open(filename, 'r') as f:
         data = [line.rstrip().split() for line in f]
@@ -44,8 +55,9 @@ def main():
 
 def find_combos(data, item_set_size=3):
     '''
-    Takes a list-of-lists; for each sublist finds all combinations of elements
-    of length item_set_size, and returns a list of the lists of combinations.
+    Takes a list-of-lists and a set size parameter; for each sublist finds all
+    combinations of elements of length item_set_size, and returns a list of
+    the lists of combinations.
 
     Input: [[1, 2, 3], [1, 2, 4]], 2
     Output: [[(1, 2), (1, 3), (2, 3)], [(1, 2), (2, 4), (1, 4)]]
