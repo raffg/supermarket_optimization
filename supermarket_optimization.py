@@ -110,6 +110,9 @@ def format_output(counter, item_set_size, sigma):
             row = [item_set_size, item_set[1]]
             row.extend(item_set[0])
             output.append(row)
+        else:
+            # function takes sorted input so we can stop once sigma is reached
+            return output
     return output
 
 
